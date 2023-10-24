@@ -1,14 +1,33 @@
 
+class DataBase:
+    __instance = None # Ссылка на экземпляр класса
 
-class Point:
     def __new__(cls, *args, **kwargs):
-        print(f'вызов __new__ для {str(cls)}')
-        return super().__new__(cls)
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
 
-    def __init__(self, x=0, y=0):
-        print(f'вызов __init__ для {self}')
-        self.x = x
-        self.y = y
+    def __del__(self):
+        DataBase.__instance = None
+
+    def __init__(self, user, pwd, port):
+        self.user = user
+        self.pwd = pwd
+        self.port = port
+
+    def connect(self):
+        print(f'Соединение м БД: {self.user=}, {self.pwd=}, {self.port}')
+
+    def cloce(self):
+        print('Соединение закрыто')
+
+    def read(self):
+        return 'Данные БД'
+
+    def write(self, data):
+        print(f'Записьв БД  {data}')
 
 
-pt = Point()
+db = DataBase('root', '1234', '80')
+db2 = DataBase('root2', '5678', '80')
+print(id(db), id(db2))
