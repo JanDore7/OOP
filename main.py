@@ -3,6 +3,14 @@ class Point:
     color = 'red'
     circle = 2
 
+    def __init__(self, a=0, b=0):
+        print(f'Инициализация экземпляра класса')
+        self.x = a
+        self.y = b
+
+    def __del__(self):
+        print(f'удаление экземпляра {self=}')
+
     def set_coords(self, x, y):
         self.x = x
         self.y = y
@@ -12,10 +20,4 @@ class Point:
 
 
 pt = Point()
-print(pt.__dict__)
-print(10*'@')
-pt.set_coords(1, 2)
-print(pt.get_coords())
-
-f = getattr(pt, 'get_coords')
-print(f())
+print(pt.x)
