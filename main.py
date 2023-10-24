@@ -1,23 +1,14 @@
 
+
 class Point:
-    color = 'red'
-    circle = 2
+    def __new__(cls, *args, **kwargs):
+        print(f'вызов __new__ для {str(cls)}')
+        return super().__new__(cls)
 
-    def __init__(self, a=0, b=0):
-        print(f'Инициализация экземпляра класса')
-        self.x = a
-        self.y = b
-
-    def __del__(self):
-        print(f'удаление экземпляра {self=}')
-
-    def set_coords(self, x, y):
+    def __init__(self, x=0, y=0):
+        print(f'вызов __init__ для {self}')
         self.x = x
         self.y = y
 
-    def get_coords(self):
-        return (self.x, self.y)
-
 
 pt = Point()
-print(pt.x)
