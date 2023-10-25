@@ -14,10 +14,16 @@ class Vector:
             self.x = x
             self.y = y
 
+        print(self.norm2(self.x, self.y))
+
     def get_cord(self):
         return self.x, self.y
 
+    @staticmethod
+    def norm2(x, y):
+        return x*x + y*y
 
-v = Vector(10, 11)
-print(v.get_cord())
+
+v = Vector(100, 11)
+
 
