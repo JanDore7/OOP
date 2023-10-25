@@ -1,33 +1,23 @@
 
-class DataBase:
-    __instance = None # Ссылка на экземпляр класса
+class Vector:
+    MIN_CORD = 0
+    MAX_CORD = 100
 
-    def __new__(cls, *args, **kwargs):
-        if cls.__instance is None:
-            cls.__instance = super().__new__(cls)
-        return cls.__instance
+    @classmethod
+    def validate(cls, arg):
+        return cls.MIN_CORD <= arg <= cls.MAX_CORD
 
-    def __del__(self):
-        DataBase.__instance = None
+    def __init__(self, x, y):
+        self.x = self.y = 0
+        # if Vector.validate(x) and Vector.validate(y):
+        if self.validate(x) and self.validate(y): # Наиболее предпочтительный вариант
+            self.x = x
+            self.y = y
 
-    def __init__(self, user, pwd, port):
-        self.user = user
-        self.pwd = pwd
-        self.port = port
-
-    def connect(self):
-        print(f'Соединение м БД: {self.user=}, {self.pwd=}, {self.port}')
-
-    def cloce(self):
-        print('Соединение закрыто')
-
-    def read(self):
-        return 'Данные БД'
-
-    def write(self, data):
-        print(f'Записьв БД  {data}')
+    def get_cord(self):
+        return self.x, self.y
 
 
-db = DataBase('root', '1234', '80')
-db2 = DataBase('root2', '5678', '80')
-print(id(db), id(db2))
+v = Vector(10, 11)
+print(v.get_cord())
+
