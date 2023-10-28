@@ -22,4 +22,4 @@ class Point:
 
 p = Point(2, 3)
 p.set_cord(10, 20)
-print(p.get_cord())
+print(p._Point__x)
