@@ -1,29 +1,15 @@
+class Point:
+    def __init__(self, x=0 , y=0):
+        self.__x = x
+        self.__y = y
 
-class Vector:
-    MIN_CORD = 0
-    MAX_CORD = 100
-
-    @classmethod
-    def validate(cls, arg):
-        return cls.MIN_CORD <= arg <= cls.MAX_CORD
-
-    def __init__(self, x, y):
-        self.x = self.y = 0
-        # if Vector.validate(x) and Vector.validate(y):
-        if self.validate(x) and self.validate(y): # Наиболее предпочтительный вариант
-            self.x = x
-            self.y = y
-
-        print(self.norm2(self.x, self.y))
+    def se_cord(self, x, y):
+        if type(x) in (int, float) and type(y) in (int, float):
+            self.__x = x
+            self.__y = y
+        raise ValueError("Координаты должны быть числами")
 
     def get_cord(self):
-        return self.x, self.y
-
-    @staticmethod
-    def norm2(x, y):
-        return x*x + y*y
-
-
-v = Vector(100, 11)
+        return self.__x, self.__y
 
 
