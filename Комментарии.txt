@@ -65,6 +65,40 @@ return super().__new__(cls)
 
 
 
+p = Point(2, 3)
+p.set_cord(10, 20)
+print(dir(p))
+'_Point__check_value', '_Point__x', '_Point__y', ... ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
